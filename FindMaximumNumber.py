@@ -17,27 +17,23 @@ In case of any invalid data or if the list is empty, display -1."""
 def find_max(num1, num2):
     list2=[]
     max_num=-1
-    count = 0
-    temp = 0
     list1=list(range(num1,num2+1))
-    print(list1)
-    if num1>num2:
-         print("-1")
+    if num1>=num2:
+        max_num=-1
     else:
-        for i in range(0,len(list1)+1):
-            temp = list1[i]
+        for i in list1:
+            temp = i
+            temp1=0
             while temp!=0:
-                temp=temp//10
-                count+=1
-            if count%3==0 and temp%5 ==0 and len(str(temp)) == 2:
-                    list2.append(temp)
-                    print(list2)
-            else:
-                    pass
-
-        list2.sort()
-        max_num = list2[-1]
-
+                temp1+=temp%10
+                temp=temp//10    
+            if temp1%3==0 and i%5 ==0 and len(str(i)) == 2:
+                    list2.append(i)
+        if(len(list2)!=0):
+            list2.sort()
+            max_num = list2[-1]
+        else:
+            max_num=-1
     return max_num
-max_num=find_max(10,15)
+max_num=find_max(24,29)
 print(max_num)
